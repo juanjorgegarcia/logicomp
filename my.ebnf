@@ -1,0 +1,79 @@
+#referencess https://tomassetti.me/ebnf, https://www2.cs.arizona.edu/~debray/Teaching/CSc453/DOCS/cminusminusspec.html, https://docs.python.org/3/reference/grammar.html
+
+PROGRAM
+    : {FUNCTION}
+    ;
+FUNCTION
+    : {TYPE}, INDENTIFIER, "(", { TYPE, INDENTIFIER, ","}, ")", STATMENT 
+    | "|>" ,"(", { TYPE, INDENTIFIER, ","}, ")", STATMENT;
+    ;
+TYPE
+    : 'int'
+    | 'bool' 
+    ;
+    
+STATMENT
+    : (DECLARATION | ATTRIBUTION | WHILE | IF | (*return*) "->" , PAREN_EXPR_REL | '{', STATMENT, '}' ), ";"
+    ;
+IF 
+    : 'if', PAREN_EXPR_REL, STATMENT , [ELSE] ;
+    ;
+
+ELSE
+    : 'else', STATMENT 
+    ;
+
+WHILE
+    : "WHILE" ,PAREN_EXPR_REL, STATMENT
+    ;
+DECLARATION
+    : TYPE, INDENTIFIER, ';'
+    | TYPE, ATTRIBUTION 
+    ;
+ATTRIBUTION
+    : INDENTIFIER, "=", EXPRESSION, ';'
+    ;
+PAREN_EXPR
+   : '(', EXPRESSION ,')' 
+   ;
+PAREN_EXPR_REL
+   : '(', EXPR_REL, ')' 
+   ;
+EXPR_REL
+    :EXPRESSION
+    | EXPRESSION { ("==" | ">" | "<",| "!="), EXPRESSION };
+    ;
+EXPRESSION
+    :TERM, { ("+" | "-"), TERM } 
+    ;
+TERM
+    :FACTOR, { ("*" | "/"), FACTOR }
+    | PAREN_EXPR_REL
+    | INDENTIFIER , {PAREN_EXPR_REL}
+    ;
+FACTOR
+    :("+" | "-") FACTOR 
+    | "(" EXPRESSION ")" 
+    | NUMBER 
+    ;
+STRING
+   : [CHARACTER]
+   ;
+INT
+   : NUMBER
+   ;
+INDENTIFIER
+   : CHARACTER, { CHARACTER | DIGIT | "_" }
+   ;
+CHARACTER
+    :'a' | 'b' | ... | 'z' 
+    | 'A'| 'B' | ... | 'Z' 
+    | DIGIT 
+    ;
+NUMBER:
+     DIGIT, {DIGIT}
+     ;
+
+DIGIT:
+    '0' | '1' | ... | '9'
+    ;
