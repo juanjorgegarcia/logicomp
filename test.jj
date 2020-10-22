@@ -1,0 +1,20 @@
+{
+void a(int b){
+        print(a);
+    }; 
+|> (int b) {print(2);};
+bool a = false;
+while (true){
+if (!a == true){
+    print(1);
+}elif (true){
+    print(2);
+}else{
+    print(3);
+}
+end;
+};
+
+
+}
+
