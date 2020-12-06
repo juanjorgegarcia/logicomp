@@ -1,0 +1,50 @@
+int x
+int x1
+int y2
+str j
+bool verdade
+int y
+x = 5
+x1 = 0
+y2 = 10
+y = ler_entrada()
+j = "oi teste"
+mostre(j)
+verdade = true
+se (verdade)
+    mostre("variavel booleana funciona")
+fim
+
+enquanto (x1 < y) || (x1 == y)
+    se x1 < 3
+        mostre(2)
+    senao_se x1 == 3
+        mostre(20)
+    senao_se x1 == 4
+        mostre(200)
+    senao
+        mostre(2000)
+    fim
+
+    se (!(x1 > 3) && (y2 == 10))
+        mostre(10)
+        mostre("dale")
+    senao
+        mostre(100)
+    fim
+
+    mostre((x1 > 3) && (x1 < y2))
+    mostre(x1)
+    x1 = x1 + 1
+fim
+mostre("operacoes de tipos")
+mostre(1 + true)  #= Ok =#
+mostre("ok")
+mostre(1 && true) #= Ok =#
+mostre("ok")
+
+mostre("a" * 1 * true) #= Ok =#
+mostre("ok")
+
+mostre("a" == "b") #= Ok, resultado bool: False =#
+mostre("ok")

@@ -1,79 +1,27 @@
 #referencess https://tomassetti.me/ebnf, https://www2.cs.arizona.edu/~debray/Teaching/CSc453/DOCS/cminusminusspec.html, https://docs.python.org/3/reference/grammar.html
 
-PROGRAM
-    : {FUNCTION}
-    ;
-FUNCTION
-    : {TYPE}, INDENTIFIER, "(", { TYPE, INDENTIFIER, ","}, ")", STATMENT 
-    | "|>" ,"(", { TYPE, INDENTIFIER, ","}, ")", STATMENT;
-    ;
-TYPE
-    : 'int'
-    | 'bool' 
-    ;
-    
-STATMENT
-    : (DECLARATION | ATTRIBUTION | WHILE | IF | (*return*) "->" , PAREN_EXPR_REL | '{', STATMENT, '}' ), ";"
-    ;
-IF 
-    : 'if', PAREN_EXPR_REL, STATMENT , [ELSE] ;
-    ;
-
-ELSE
-    : 'else', STATMENT 
-    ;
-
-WHILE
-    : "WHILE" ,PAREN_EXPR_REL, STATMENT
-    ;
-DECLARATION
-    : TYPE, INDENTIFIER, ';'
-    | TYPE, ATTRIBUTION 
-    ;
-ATTRIBUTION
-    : INDENTIFIER, "=", EXPRESSION, ';'
-    ;
-PAREN_EXPR
-   : '(', EXPRESSION ,')' 
-   ;
-PAREN_EXPR_REL
-   : '(', EXPR_REL, ')' 
-   ;
-EXPR_REL
-    :EXPRESSION
-    | EXPRESSION { ("==" | ">" | "<",| "!="), EXPRESSION };
-    ;
-EXPRESSION
-    :TERM, { ("+" | "-"), TERM } 
-    ;
-TERM
-    :FACTOR, { ("*" | "/"), FACTOR }
-    | PAREN_EXPR_REL
-    | INDENTIFIER , {PAREN_EXPR_REL}
-    ;
-FACTOR
-    :("+" | "-") FACTOR 
-    | "(" EXPRESSION ")" 
-    | NUMBER 
-    ;
-STRING
-   : [CHARACTER]
-   ;
-INT
-   : NUMBER
-   ;
-INDENTIFIER
-   : CHARACTER, { CHARACTER | DIGIT | "_" }
-   ;
-CHARACTER
-    :'a' | 'b' | ... | 'z' 
-    | 'A'| 'B' | ... | 'Z' 
-    | DIGIT 
-    ;
-NUMBER:
-     DIGIT, {DIGIT}
-     ;
-
-DIGIT:
-    '0' | '1' | ... | '9'
-    ;
+### EBNF
+* PROGRAM = { FUNCTION | COMMAND } ;
+* BLOCK = { COMMAND } ;
+* FUNCTION = "func", IDENTIFIER, "(", (TYPE, IDENTIFIER ), {"," , TYPE, IDENTIFIER}, ")", "->", TYPE, "\n", BLOCK, "fim" ;
+* FUNCALL = IDENTIFIER, "(", (REL_EXPRESSION), {"," , REL_EXPRESSION}, ")" ;
+* COMMAND = ( λ | ASSIGNMENT | PRINT | IF | WHILE | LOCAL | RETURN | FUNCALL), "\n" ;
+* RETURN = "retorne", REL_EXPRESSION ;
+* LOCAL = TYPE, IDENTIFIER;
+* ASSIGNMENT = IDENTIFIER, "=", REL_EXPRESSION | "ler_entrada", "(", ")" ;
+* PRINT = "mostre", "(", REL_EXPRESSION, ")" ;
+* EXPRESSION = TERM, { ("+" | "-" | "||"), TERM } ;
+* REL_EXPRESSION = EXPRESSION, { ("==" | ">" | "<"), EXPRESSION };
+* WHILE = "enquanto", REL_EXPRESSION, "\n", BLOCK, "fim";
+* IF = "se", REL_EXPRESSION, "\n", BLOCK, { ELSEIF | ELSE }, "fim";
+* ELSEIF = "senao_se", REL_EXPRESSION, "\n", BLOCK, { ELSEIF | ELSE };
+* ELSE = "senao", "\n", BLOCK;
+* TERM = FACTOR, { ("*" | "/" | "&&"), FACTOR } ;
+* FACTOR = (("+" | "-" | "!"), FACTOR) | NUMBER | BOOLEAN | STRING | "(", REL_EXPRESSION, ")" | IDENTIFIER | FUNCALL;
+* IDENTIFIER = LETTER, { LETTER | DIGIT | "_" } ;
+* TYPE = "int" | "bool" | "str"; 
+* NUMBER = DIGIT, { DIGIT } ;
+* STRING = '"', {.*?}, '"';
+* BOOLEAN = "true" | "false";
+* LETTER = ( a | ... | z | A | ... | Z ) ;
+* DIGIT = ( 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 ) ;

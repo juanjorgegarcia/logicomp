@@ -1,0 +1,15 @@
+func soma(int x)->int
+    int test
+    int a
+
+    a = x + 1
+    mostre(a)
+    se a < 5
+        a = soma(a)
+    fim
+    retorne a
+fim
+int a
+a = 1
+a = soma(a)
+mostre(a)
