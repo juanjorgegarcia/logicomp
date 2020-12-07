@@ -1,28 +1,28 @@
-int x
-int x1
+int x  #= declaracao de variavel =#
+int x1 
 int y2
-str j
+str j 
 bool verdade
 int y
-x = 5
+x = 5 #= atribuicao de variavel =#
 x1 = 0
 y2 = 10
-y = ler_entrada()
+y = ler_entrada() #= input =#
 j = "oi teste"
-mostre(j)
+mostre(j) #= print =#
 verdade = true
-se (verdade)
+se (verdade) #= inicio da condicional =#
     mostre("variavel booleana funciona")
-fim
+fim #= fim da condicional =#
 
-enquanto (x1 < y) || (x1 == y)
-    se x1 < 3
+enquanto (x1 < y) || (x1 == y) #= loop (while) =#
+    se x1 < 3 
         mostre(2)
-    senao_se x1 == 3
+    senao_se x1 == 3 #= elseif =#
         mostre(20)
     senao_se x1 == 4
         mostre(200)
-    senao
+    senao #= else =#
         mostre(2000)
     fim
 

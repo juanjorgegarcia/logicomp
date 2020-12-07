@@ -1,14 +1,14 @@
-func soma(int x)->int
-    int test
+func soma(int x) -> int #= declaracao de funcao: func identifier(tipo arg1) -> tipo=#
+    int test #= declaracao de variavel: tipo identifier =#
     int a
 
-    a = x + 1
-    mostre(a)
-    se a < 5
+    a = x + 1 #= atribuicao =#
+    mostre(a) #= print =#
+    se a < 5 #= inicio da condicional =#
         a = soma(a)
-    fim
-    retorne a
-fim
+    fim  #= fim da condicional =#
+    retorne a #= return =#
+fim #= fim da funcao =#
 int a
 a = 1
 a = soma(a)
