@@ -348,9 +348,7 @@ class Parser:
                                     else:
                                         raise SyntaxError(
                                             f'TOKEN INESPERADO: recebido ({Parser.tokens.actual.value}) na posicao: ({Parser.tokens.position}), esperando TYPE')
-                        else:
-                            raise SyntaxError(
-                                f'TOKEN INESPERADO: recebido ({Parser.tokens.actual.value}) na posicao: ({Parser.tokens.position}), esperando TYPE ')
+
                         if(Parser.tokens.actual._type == "CLOSED_PARENTHESIS"):
                             Parser.tokens.selectNext()
                             if Parser.tokens.actual._type == "RET_TYPE":
