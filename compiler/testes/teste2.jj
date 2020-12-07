@@ -14,7 +14,6 @@ verdade = true
 se (verdade) #= inicio da condicional =#
     mostre("variavel booleana funciona")
 fim #= fim da condicional =#
-
 enquanto (x1 < y) || (x1 == y) #= loop (while) =#
     se x1 < 3 
         mostre(2)
@@ -37,14 +36,3 @@ enquanto (x1 < y) || (x1 == y) #= loop (while) =#
     mostre(x1)
     x1 = x1 + 1
 fim
-mostre("operacoes de tipos")
-mostre(1 + true)  #= Ok =#
-mostre("ok")
-mostre(1 && true) #= Ok =#
-mostre("ok")
-
-mostre("a" * 1 * true) #= Ok =#
-mostre("ok")
-
-mostre("a" == "b") #= Ok, resultado bool: False =#
-mostre("ok")

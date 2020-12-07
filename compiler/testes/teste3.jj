@@ -1,0 +1,11 @@
+mostre("operacoes de tipos")
+mostre(1 + true)  #= Ok =#
+mostre("ok")
+mostre(1 && true) #= Ok =#
+mostre("ok")
+
+mostre("a" * 1 * true) #= Ok =#
+mostre("ok")
+
+mostre("a" == "b") #= Ok, resultado bool: False =#
+mostre("ok")
