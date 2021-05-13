@@ -1,2 +1,4 @@
 # logicomp
-Repositório para a matéria Lógica da Computação 2020.2
+My own programming language "Descomp" with it's compiler made in python.
+
+This project was made for the  "Logica da Computação" module on my computer engineering graduation on Insper.
